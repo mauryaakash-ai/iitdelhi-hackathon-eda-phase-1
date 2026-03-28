@@ -1,0 +1,11 @@
+EDA Observations (running log)
+
+- Rapid pass-through: Iterative scan counts credit→debit pairs within 24h covering ≥95% of the credit. Resulting distributions show mules concentrate higher scores; see `rapid_pass_through_score_optimized.png`.
+- Clustering: MiniBatchKMeans on account + aggregated transaction features surfaces mule-heavy groups. Cluster 0 holds 2,098 accounts (mule rate 8.65%) with median txn mean ₹24.5k; visuals in `cluster_scatter.png` and `cluster_mule_rate.png`. Full stats in `cluster_summary.csv`.
+- Branch freeze/mule density: Dot plots in `branch_freeze_mule_dotplots.png` show branch 4091 leading on mule count (6) and freeze count (3) with mule rate 85.7% among labeled accounts; branch 2847 shows both freezes and mules (2 each, mule rate 50%). Data in `branch_freeze_mule_stats.csv`.
+- Freeze→next opening (same branch): Overall gap median 167 days, 75th percentile 320 days, max 1,268 days (950 freeze events with a subsequent opening). Branch highlights: 5672 median 101 days (3 samples), 4091 gap 65 days (1 sample), 3984 gap 88 days (1 sample). Updated visuals: `freeze_gap_branch_bubble.png` (size=frozen events, color=mule rate) and `freeze_gap_hist_by_label.png` (gap distribution split by Mule/Legit/Unlabeled). Tables: `freeze_to_open_branch_stats.csv`, `freeze_to_open_events.csv`.
+- Frozen-account alert reasons: Among frozen accounts with labels, top reasons are Routine Investigation (40), Rapid Movement of Funds (14), Structuring Below Threshold (11), Unusual Fund Flow Pattern (10), Income-Transaction Mismatch (8). Counts in `frozen_accounts_alert_reasons.csv`.
+- Core audits: Shapes + missingness run for customers, accounts, linkage, products, labels. Class balance: 263 mules / 23,760 legit (1.09% mule rate). Key missingness: accounts freeze/unfreeze dates mostly null; IDs/kys present.
+- Customer age/tenure: Mule vs legit broadly similar (median age 50y, tenure ~16y; mules slightly older + longer tenure).
+- Product holdings: Mules show slightly higher mean loan and credit-card exposure; savings balance median higher for mules (₹1.1k vs 0).
+- Transaction channels by label (labeled accounts only): Mules concentrated in UPI (UPC/UPD) and IMPS; top mule channels UPC 16,855 / UPD 15,187 / IPM 3,174. Round-amount signal: 7,935 mule txns exactly on ₹1k multiples; 223 mule txns in ₹49–50k band (structuring hint).
