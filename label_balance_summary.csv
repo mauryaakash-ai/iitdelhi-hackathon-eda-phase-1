@@ -1,0 +1,7 @@
+metric,value
+mule_count,263.0
+legit_count,23760.0
+total_labeled_accounts,24023.0
+mule_rate,0.010947841651750405
+legit_to_mule_ratio,90.34220532319392
+labeled_coverage_of_accounts,0.6000049952545082
