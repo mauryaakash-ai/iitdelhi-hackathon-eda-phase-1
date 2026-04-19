@@ -1,4 +1,4 @@
-EDA Observations (running log)
+*EDA Observations (running log)*
 
 - Rapid pass-through: Iterative scan counts credit→debit pairs within 24h covering ≥95% of the credit. Resulting distributions show mules concentrate higher scores; see `rapid_pass_through_score_optimized.png`.
 - Clustering: MiniBatchKMeans on account + aggregated transaction features surfaces mule-heavy groups. Cluster 0 holds 2,098 accounts (mule rate 8.65%) with median txn mean ₹24.5k; visuals in `cluster_scatter.png` and `cluster_mule_rate.png`. Full stats in `cluster_summary.csv`.
